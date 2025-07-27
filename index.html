@@ -15,6 +15,7 @@
       flex-direction: column;
       align-items: center;
       color: #2c3e50;
+      min-height: 100vh;
     }
 
     h1 {
@@ -22,11 +23,14 @@
       color: #336699;
     }
 
-    .container {
+    .layout {
       display: flex;
-      justify-content: center;
       gap: 2rem;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      justify-content: center;
+      margin-bottom: 2rem;
+      width: 100%;
+      max-width: 640px;
     }
 
     .user, .shared-box {
@@ -38,6 +42,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      box-sizing: border-box;
     }
 
     .user h2, .shared-box h2 {
@@ -54,6 +59,7 @@
       flex-direction: column;
       gap: 1rem;
       margin-bottom: 1rem;
+      width: 100%;
     }
 
     .button {
@@ -65,6 +71,8 @@
       font-weight: bold;
       cursor: pointer;
       transition: all 0.3s ease;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .button.active {
@@ -83,22 +91,14 @@
       text-align: center;
     }
 
-    .layout {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 2rem;
-    }
-
-    /* Nuevo estilo para contenedor con imágenes laterales */
-    .entrenos-con-imagenes {
+    /* Contenedor de entrenos y las imágenes laterales */
+    .entrenos-container {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 1rem;
-      flex-wrap: nowrap;
-      margin-bottom: 2rem;
+      width: 100%;
+      max-width: 640px;
     }
 
     .side-img {
@@ -107,11 +107,33 @@
       border-radius: 15px;
       object-fit: cover;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      flex-shrink: 0;
+    }
+
+    /* Ajustes para móvil */
+    @media (max-width: 700px) {
+      .layout, .entrenos-container {
+        flex-wrap: wrap;
+        max-width: 100%;
+      }
+      .user, .shared-box {
+        width: 100%;
+        max-width: 320px;
+      }
+      .entrenos-container {
+        justify-content: center;
+      }
+      .side-img {
+        width: 60px;
+        height: 60px;
+      }
     }
   </style>
 </head>
 <body>
   <h1>Seguimiento Diario de Suplementos</h1>
+
+  <!-- Cuadros de Rahma y Daniel -->
   <div class="layout">
     <div class="user" id="rahma">
       <h2>Rahma</h2>
@@ -137,9 +159,10 @@
     </div>
   </div>
 
-  <div class="entrenos-con-imagenes">
+  <!-- Entrenos y las imágenes laterales -->
+  <div class="entrenos-container">
     <img class="side-img" src="https://i.pinimg.com/736x/09/5b/7e/095b7e6512b04128d196a23e0a6f25a9.jpg" alt="gimnasio minimalista" />
-    
+
     <div class="shared-box">
       <h2>Entrenos hasta sushi</h2>
       <p><strong>Faltan:</strong> <span id="entrenosRestantes">12</span></p>
@@ -147,8 +170,8 @@
       <p><strong>Sushis ganados:</strong> <span id="sushisGanados">0</span></p>
       <button class="button" onclick="registrarEntreno()">+1 Entreno</button>
     </div>
-    
-    <img class="side-img" src="https://img.freepik.com/premium-vector/vector-set-sushi-plate-hand-drawn-illustration_705652-621.jpg" alt="sushi minimalista" />
+
+    <img class="side-img" src="https://i.pinimg.com/736x/00/fa/1d/00fa1d7ab7c99de5a7b6353aae74b699.jpg" alt="sushi minimalista" />
   </div>
 
   <script>
