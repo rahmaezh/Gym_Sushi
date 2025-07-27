@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gym Sushi</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    /* Aumentamos la fuente base */
+    /* Fuente base un poco más pequeña que antes */
     html {
-      font-size: 18px;
+      font-size: 17px;
     }
 
     body {
@@ -26,7 +26,7 @@
     h1 {
       margin-bottom: 2rem;
       color: #336699;
-      font-size: 2.5rem;
+      font-size: 2.3rem;
     }
 
     .layout {
@@ -36,30 +36,32 @@
       justify-content: center;
       margin-bottom: 2rem;
       width: 100%;
-      max-width: 640px;
+      max-width: 700px;
     }
 
-    .user, .shared-box {
+    .user,
+    .shared-box {
       background-color: white;
       border-radius: 20px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       padding: 2rem;
-      width: 280px;
+      width: 320px; /* un poco más ancho que antes */
       display: flex;
       flex-direction: column;
       align-items: center;
       box-sizing: border-box;
-      font-size: 1.1rem; /* texto un poco más grande en los cuadros */
+      font-size: 1.1rem;
     }
 
-    .user h2, .shared-box h2 {
+    .user h2,
+    .shared-box h2 {
       margin-top: 0;
       color: #336699;
-      font-size: 1.8rem;
+      font-size: 1.7rem;
     }
 
     .shared-box h2 {
-      font-size: 1.9rem;
+      font-size: 1.8rem;
     }
 
     .buttons {
@@ -81,7 +83,7 @@
       transition: all 0.3s ease;
       width: 100%;
       box-sizing: border-box;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
     }
 
     .button.active {
@@ -98,17 +100,17 @@
       font-weight: bold;
       color: #2c3e50;
       text-align: center;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
     }
 
     /* Contenedor de entrenos y las imágenes laterales */
     .entrenos-container {
       display: flex;
-      align-items: stretch; /* que estiren en altura igual */
+      align-items: stretch;
       justify-content: center;
       gap: 1rem;
       width: 100%;
-      max-width: 640px;
+      max-width: 700px;
     }
 
     .side-img {
@@ -117,8 +119,8 @@
       object-fit: cover;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       flex-shrink: 0;
-      height: auto;
-      max-height: 100%; /* para estirar con el contenedor */
+      max-height: 280px;
+      aspect-ratio: 1 / 1;
     }
 
     .shared-box {
@@ -127,24 +129,18 @@
       justify-content: center;
     }
 
-    /* Para que las imágenes tengan la misma altura que el cuadro shared-box */
-    .entrenos-container > img.side-img {
-      height: auto;
-      max-height: 280px; /* similar a la altura aproximada del cuadro */
-      width: auto;
-      aspect-ratio: 1 / 1;
-    }
-
     /* Ajustes para móvil */
     @media (max-width: 700px) {
       html {
         font-size: 16px;
       }
-      .layout, .entrenos-container {
+      .layout,
+      .entrenos-container {
         flex-wrap: wrap;
         max-width: 100%;
       }
-      .user, .shared-box {
+      .user,
+      .shared-box {
         width: 100%;
         max-width: 320px;
       }
@@ -190,7 +186,11 @@
 
   <!-- Entrenos y las imágenes laterales -->
   <div class="entrenos-container">
-    <img class="side-img" src="https://i.pinimg.com/736x/09/5b/7e/095b7e6512b04128d196a23e0a6f25a9.jpg" alt="gimnasio minimalista" />
+    <img
+      class="side-img"
+      src="https://i.pinimg.com/736x/09/5b/7e/095b7e6512b04128d196a23e0a6f25a9.jpg"
+      alt="gimnasio minimalista"
+    />
 
     <div class="shared-box">
       <h2>Entrenos hasta sushi</h2>
@@ -200,7 +200,11 @@
       <button class="button" onclick="registrarEntreno()">+1 Entreno</button>
     </div>
 
-    <img class="side-img" src="https://img.freepik.com/premium-vector/vector-set-sushi-plate-hand-drawn-illustration_705652-621.jpg" alt="sushi minimalista" />
+    <img
+      class="side-img"
+      src="https://img.freepik.com/premium-vector/vector-set-sushi-plate-hand-drawn-illustration_705652-621.jpg"
+      alt="sushi minimalista"
+    />
   </div>
 
   <script>
