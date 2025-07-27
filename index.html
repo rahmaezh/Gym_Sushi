@@ -6,6 +6,11 @@
   <title>Gym Sushi</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    /* Aumentamos la fuente base */
+    html {
+      font-size: 18px;
+    }
+
     body {
       font-family: 'Nunito', sans-serif;
       background-color: #f0f6ff;
@@ -21,6 +26,7 @@
     h1 {
       margin-bottom: 2rem;
       color: #336699;
+      font-size: 2.5rem;
     }
 
     .layout {
@@ -43,15 +49,17 @@
       flex-direction: column;
       align-items: center;
       box-sizing: border-box;
+      font-size: 1.1rem; /* texto un poco más grande en los cuadros */
     }
 
     .user h2, .shared-box h2 {
       margin-top: 0;
       color: #336699;
+      font-size: 1.8rem;
     }
 
     .shared-box h2 {
-      font-size: 1.6rem;
+      font-size: 1.9rem;
     }
 
     .buttons {
@@ -73,6 +81,7 @@
       transition: all 0.3s ease;
       width: 100%;
       box-sizing: border-box;
+      font-size: 1.1rem;
     }
 
     .button.active {
@@ -89,12 +98,13 @@
       font-weight: bold;
       color: #2c3e50;
       text-align: center;
+      font-size: 1.2rem;
     }
 
     /* Contenedor de entrenos y las imágenes laterales */
     .entrenos-container {
       display: flex;
-      align-items: center;
+      align-items: stretch; /* que estiren en altura igual */
       justify-content: center;
       gap: 1rem;
       width: 100%;
@@ -102,16 +112,34 @@
     }
 
     .side-img {
-      width: 80px;
-      height: 80px;
+      width: auto;
       border-radius: 15px;
       object-fit: cover;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       flex-shrink: 0;
+      height: auto;
+      max-height: 100%; /* para estirar con el contenedor */
+    }
+
+    .shared-box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Para que las imágenes tengan la misma altura que el cuadro shared-box */
+    .entrenos-container > img.side-img {
+      height: auto;
+      max-height: 280px; /* similar a la altura aproximada del cuadro */
+      width: auto;
+      aspect-ratio: 1 / 1;
     }
 
     /* Ajustes para móvil */
     @media (max-width: 700px) {
+      html {
+        font-size: 16px;
+      }
       .layout, .entrenos-container {
         flex-wrap: wrap;
         max-width: 100%;
@@ -126,6 +154,7 @@
       .side-img {
         width: 60px;
         height: 60px;
+        max-height: none;
       }
     }
   </style>
@@ -229,10 +258,14 @@
       const today = new Date().toLocaleDateString();
       if (lastDate !== today) {
         reiniciarDiario();
+        estado.entrenos = 0;
+        estado.sushis = 0;
+        actualizarContadores();
         localStorage.setItem('lastDate', today);
       }
     }
 
+    // Ejecutamos al cargar
     checkDailyReset();
     actualizarContadores();
   </script>
