@@ -15,13 +15,12 @@
       flex-direction: column;
       align-items: center;
       color: #2c3e50;
-      font-size: 14px; /* letra más pequeña */
+      font-size: 0.9rem; /* tamaño de letra ajustado */
     }
 
     h1 {
       margin-bottom: 2rem;
       color: #336699;
-      font-size: 2rem;
     }
 
     .container {
@@ -29,24 +28,26 @@
       justify-content: center;
       gap: 2rem;
       flex-wrap: wrap;
-      margin-bottom: 2rem;
     }
 
-    .user {
+    .user, .shared-box {
       background-color: white;
       border-radius: 20px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       padding: 2rem;
-      width: 320px;
+      width: 320px; /* cuadros un poco más anchos */
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    .user h2 {
+    .user h2, .shared-box h2 {
       margin-top: 0;
       color: #336699;
-      font-size: 1.5rem;
+    }
+
+    .shared-box h2 {
+      font-size: 1.6rem;
     }
 
     .buttons {
@@ -67,7 +68,8 @@
       cursor: pointer;
       transition: all 0.3s ease;
       width: 100%;
-      font-size: 1rem;
+      box-sizing: border-box;
+      text-align: center;
     }
 
     .button.active {
@@ -84,10 +86,17 @@
       font-weight: bold;
       color: #2c3e50;
       text-align: center;
-      min-height: 1.4em;
     }
 
-    /* Nuevo contenedor para el tercer cuadro con imágenes a los lados */
+    .layout {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    /* Contenedor para el cuadro y las imágenes */
     .entrenos-container {
       display: flex;
       align-items: center;
@@ -95,30 +104,17 @@
       width: 100%;
       max-width: 900px;
       margin-top: 1rem;
-      padding: 0 1rem;
+      padding: 0;
       box-sizing: border-box;
     }
 
+    /* Cuadro central */
     .shared-box {
-      background-color: white;
-      border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      padding: 2rem;
-      width: 360px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      font-size: 1.1rem;
-      box-sizing: border-box;
-      text-align: center;
+      width: 320px; /* ancho del cuadro */
+      margin: 0 1rem;
     }
 
-    .shared-box h2 {
-      margin-top: 0;
-      color: #336699;
-      font-size: 1.6rem;
-    }
-
+    /* Imágenes laterales */
     .side-img {
       border-radius: 15px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -126,21 +122,13 @@
       width: 280px;
       object-fit: cover;
       flex-shrink: 0;
-    }
-
-    /* Margen para separar imágenes del cuadro */
-    .entrenos-container > img:first-child {
-      margin-right: auto;
-    }
-
-    .entrenos-container > img:last-child {
-      margin-left: auto;
+      margin: 0;
     }
   </style>
 </head>
 <body>
   <h1>Seguimiento Diario de Suplementos</h1>
-  <div class="container">
+  <div class="layout">
     <div class="user" id="rahma">
       <h2>Rahma</h2>
       <div class="buttons">
@@ -166,11 +154,8 @@
   </div>
 
   <div class="entrenos-container">
-    <img
-      src="https://i.pinimg.com/736x/09/5b/7e/095b7e6512b04128d196a23e0a6f25a9.jpg"
-      alt="gimnasio minimalista"
-      class="side-img"
-    />
+    <img class="side-img" src="https://i.pinimg.com/736x/09/5b/7e/095b7e6512b04128d196a23e0a6f25a9.jpg" alt="gimnasio minimalista" />
+    
     <div class="shared-box">
       <h2>Entrenos hasta sushi</h2>
       <p><strong>Faltan:</strong> <span id="entrenosRestantes">12</span></p>
@@ -178,11 +163,8 @@
       <p><strong>Sushis ganados:</strong> <span id="sushisGanados">0</span></p>
       <button class="button" onclick="registrarEntreno()">+1 Entreno</button>
     </div>
-    <img
-      src="https://i.pinimg.com/736x/00/fa/1d/00fa1d7ab7c99de5a7b6353aae74b699.jpg"
-      alt="sushi minimalista"
-      class="side-img"
-    />
+
+    <img class="side-img" src="https://i.pinimg.com/736x/00/fa/1d/00fa1d7ab7c99de5a7b6353aae74b699.jpg" alt="sushi minimalista" />
   </div>
 
   <script>
