@@ -6,9 +6,9 @@
   <title>Gym Sushi</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    /* Fuente base un poco más pequeña que antes */
+    /* Fuente base más pequeña */
     html {
-      font-size: 17px;
+      font-size: 16px;
     }
 
     body {
@@ -45,7 +45,7 @@
       border-radius: 20px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       padding: 2rem;
-      width: 320px; /* un poco más ancho que antes */
+      width: 320px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -103,7 +103,6 @@
       font-size: 1.15rem;
     }
 
-    /* Contenedor de entrenos y las imágenes laterales */
     .entrenos-container {
       display: flex;
       align-items: stretch;
@@ -129,10 +128,9 @@
       justify-content: center;
     }
 
-    /* Ajustes para móvil */
     @media (max-width: 700px) {
       html {
-        font-size: 16px;
+        font-size: 15px;
       }
       .layout,
       .entrenos-container {
@@ -158,7 +156,6 @@
 <body>
   <h1>Seguimiento Diario de Suplementos</h1>
 
-  <!-- Cuadros de Rahma y Daniel -->
   <div class="layout">
     <div class="user" id="rahma">
       <h2>Rahma</h2>
@@ -184,7 +181,6 @@
     </div>
   </div>
 
-  <!-- Entrenos y las imágenes laterales -->
   <div class="entrenos-container">
     <img
       class="side-img"
@@ -269,7 +265,6 @@
       }
     }
 
-    // Ejecutamos al cargar
     checkDailyReset();
     actualizarContadores();
   </script>
