@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gym Sushi</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
   <style>
@@ -15,7 +15,7 @@
       flex-direction: column;
       align-items: center;
       color: #2c3e50;
-      font-size: 0.9rem; /* tamaño de letra ajustado */
+      font-size: 0.9rem;
     }
 
     h1 {
@@ -23,31 +23,28 @@
       color: #336699;
     }
 
-    .container {
+    .layout {
       display: flex;
       justify-content: center;
       gap: 2rem;
       flex-wrap: wrap;
+      margin-bottom: 2rem;
     }
 
-    .user, .shared-box {
+    .user {
       background-color: white;
       border-radius: 20px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       padding: 2rem;
-      width: 320px; /* cuadros un poco más anchos */
+      width: 320px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    .user h2, .shared-box h2 {
+    .user h2 {
       margin-top: 0;
       color: #336699;
-    }
-
-    .shared-box h2 {
-      font-size: 1.6rem;
     }
 
     .buttons {
@@ -88,33 +85,35 @@
       text-align: center;
     }
 
-    .layout {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 2rem;
-    }
-
-    /* Contenedor para el cuadro y las imágenes */
     .entrenos-container {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      max-width: 900px;
+      max-width: 950px;
       margin-top: 1rem;
-      padding: 0;
+      padding: 0 1rem; /* espacio interno para que no toque borde ventana */
       box-sizing: border-box;
     }
 
-    /* Cuadro central */
     .shared-box {
-      width: 320px; /* ancho del cuadro */
+      width: 320px;
       margin: 0 1rem;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    /* Imágenes laterales */
+    .shared-box h2 {
+      font-size: 1.6rem;
+      margin-top: 0;
+      color: #336699;
+    }
+
     .side-img {
       border-radius: 15px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -154,7 +153,7 @@
   </div>
 
   <div class="entrenos-container">
-    <img class="side-img" src="https://i.pinimg.com/736x/09/5b/7e/095b7e6512b04128d196a23e0a6f25a9.jpg" alt="gimnasio minimalista" />
+    <img class="side-img" src="https://i.pinimg.com/736x/09/5b/7e/095b7e6512b04128d196a23e0a6f25a9.jpg" alt="gimnasio minimalista" style="margin-right: 0;"/>
     
     <div class="shared-box">
       <h2>Entrenos hasta sushi</h2>
@@ -164,20 +163,13 @@
       <button class="button" onclick="registrarEntreno()">+1 Entreno</button>
     </div>
 
-    <img class="side-img" src="https://i.pinimg.com/736x/00/fa/1d/00fa1d7ab7c99de5a7b6353aae74b699.jpg" alt="sushi minimalista" />
+    <img class="side-img" src="https://i.pinimg.com/736x/00/fa/1d/00fa1d7ab7c99de5a7b6353aae74b699.jpg" alt="sushi minimalista" style="margin-left: 0;" />
   </div>
 
   <script>
     const objetivos = {
       rahma: ['Creatina', 'Proteína', 'Omega-3', 'Omega-3'],
       daniel: ['Creatina', 'Proteína', 'Omega-3', 'Omega-3', 'Omega-3']
-    };
-
-    const estado = {
-      rahma: [],
-      daniel: [],
-      entrenos: 0,
-      sushis: 0
     };
 
     function toggle(btn) {
@@ -197,6 +189,11 @@
       statusRahma.innerText = rahmaOK ? '¡Objetivo logrado! Nos vemos mañana.' : '';
       statusDaniel.innerText = danielOK ? '¡Objetivo logrado! Nos vemos mañana.' : '';
     }
+
+    const estado = {
+      entrenos: 0,
+      sushis: 0
+    };
 
     function registrarEntreno() {
       estado.entrenos++;
