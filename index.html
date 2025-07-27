@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tracker de Suplementos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: #f0f6ff;
+      margin: 0;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #2c3e50;
+    }
+
+    h1 {
+      margin-bottom: 2rem;
+      color: #336699;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .user, .shared-box {
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      width: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .user h2, .shared-box h2 {
+      margin-top: 0;
+      color: #336699;
+    }
+
+    .shared-box h2 {
+      font-size: 1.6rem;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .button {
+      padding: 0.8rem 1.2rem;
+      border-radius: 12px;
+      border: 2px solid #336699;
+      background-color: white;
+      color: #336699;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .button.active {
+      background-color: #a8c7e6;
+      color: white;
+    }
+
+    .button:hover {
+      background-color: #d9e9f8;
+    }
+
+    .status {
+      margin-top: 1rem;
+      font-weight: bold;
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    .layout {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Seguimiento Diario de Suplementos</h1>
+  <div class="layout">
+    <div class="user" id="rahma">
+      <h2>Rahma</h2>
+      <div class="buttons">
+        <button class="button" onclick="toggle(this)">Creatina</button>
+        <button class="button" onclick="toggle(this)">Proteína</button>
+        <button class="button" onclick="toggle(this)">Omega-3</button>
+        <button class="button" onclick="toggle(this)">Omega-3</button>
+      </div>
+      <div class="status" id="statusRahma"></div>
+    </div>
+
+    <div class="user" id="daniel">
+      <h2>Daniel</h2>
+      <div class="buttons">
+        <button class="button" onclick="toggle(this)">Creatina</button>
+        <button class="button" onclick="toggle(this)">Proteína</button>
+        <button class="button" onclick="toggle(this)">Omega-3</button>
+        <button class="button" onclick="toggle(this)">Omega-3</button>
+        <button class="button" onclick="toggle(this)">Omega-3</button>
+      </div>
+      <div class="status" id="statusDaniel"></div>
+    </div>
+  </div>
+
+  <div class="shared-box">
+    <h2>Entrenos hasta sushi</h2>
+    <p><strong>Faltan:</strong> <span id="entrenosRestantes">12</span></p>
+    <p><strong>Total entrenos:</strong> <span id="entrenosTotales">0</span></p>
+    <p><strong>Sushis ganados:</strong> <span id="sushisGanados">0</span></p>
+    <button class="button" onclick="registrarEntreno()">+1 Entreno</button>
+  </div>
+
+  <script>
+    const objetivos = {
+      rahma: ['Creatina', 'Proteína', 'Omega-3', 'Omega-3'],
+      daniel: ['Creatina', 'Proteína', 'Omega-3', 'Omega-3', 'Omega-3']
+    };
+
+    const estado = {
+      rahma: [],
+      daniel: [],
+      entrenos: 0,
+      sushis: 0
+    };
+
+    function toggle(btn) {
+      btn.classList.toggle('active');
+      verificarObjetivos();
+    }
+
+    function verificarObjetivos() {
+      const rahmaBtns = document.querySelectorAll('#rahma .button');
+      const danielBtns = document.querySelectorAll('#daniel .button');
+      const statusRahma = document.getElementById('statusRahma');
+      const statusDaniel = document.getElementById('statusDaniel');
+
+      const rahmaOK = [...rahmaBtns].every(btn => btn.classList.contains('active'));
+      const danielOK = [...danielBtns].every(btn => btn.classList.contains('active'));
+
+      statusRahma.innerText = rahmaOK ? '¡Objetivo logrado! Nos vemos mañana.' : '';
+      statusDaniel.innerText = danielOK ? '¡Objetivo logrado! Nos vemos mañana.' : '';
+    }
+
+    function registrarEntreno() {
+      estado.entrenos++;
+      if (estado.entrenos % 12 === 0) estado.sushis++;
+      actualizarContadores();
+    }
+
+    function actualizarContadores() {
+      const entrenosRestantes = 12 - (estado.entrenos % 12);
+      document.getElementById('entrenosRestantes').innerText = entrenosRestantes;
+      document.getElementById('entrenosTotales').innerText = estado.entrenos;
+      document.getElementById('sushisGanados').innerText = estado.sushis;
+    }
+
+    function reiniciarDiario() {
+      document.querySelectorAll('.button').forEach(btn => btn.classList.remove('active'));
+      document.getElementById('statusRahma').innerText = '';
+      document.getElementById('statusDaniel').innerText = '';
+    }
+
+    function checkDailyReset() {
+      const lastDate = localStorage.getItem('lastDate');
+      const today = new Date().toLocaleDateString();
+      if (lastDate !== today) {
+        reiniciarDiario();
+        localStorage.setItem('lastDate', today);
+      }
+    }
+
+    checkDailyReset();
+    actualizarContadores();
+  </script>
+</body>
+</html>
