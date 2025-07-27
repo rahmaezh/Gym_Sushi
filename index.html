@@ -6,7 +6,6 @@
   <title>Gym Sushi</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    /* Fuente base más pequeña */
     html {
       font-size: 16px;
     }
@@ -39,8 +38,7 @@
       max-width: 700px;
     }
 
-    .user,
-    .shared-box {
+    .user {
       background-color: white;
       border-radius: 20px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -53,15 +51,10 @@
       font-size: 1.1rem;
     }
 
-    .user h2,
-    .shared-box h2 {
+    .user h2 {
       margin-top: 0;
       color: #336699;
       font-size: 1.7rem;
-    }
-
-    .shared-box h2 {
-      font-size: 1.8rem;
     }
 
     .buttons {
@@ -103,29 +96,47 @@
       font-size: 1.15rem;
     }
 
+    /* Contenedor para entrenos con las imágenes laterales */
     .entrenos-container {
       display: flex;
-      align-items: stretch;
-      justify-content: center;
+      align-items: center;
+      justify-content: space-between; /* para separar imágenes a los extremos */
       gap: 1rem;
       width: 100%;
       max-width: 700px;
-    }
-
-    .side-img {
-      width: auto;
-      border-radius: 15px;
-      object-fit: cover;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      flex-shrink: 0;
-      max-height: 280px;
-      aspect-ratio: 1 / 1;
+      margin-top: 1rem;
+      padding: 0 1rem; /* un poco de padding horizontal para que no pegue al borde */
+      box-sizing: border-box;
     }
 
     .shared-box {
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      width: 320px;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      font-size: 1.1rem;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .shared-box h2 {
+      font-size: 1.8rem;
+      color: #336699;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+
+    .side-img {
+      border-radius: 15px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      max-height: 280px;
+      width: 280px; /* ancho fijo igual que el cuadro */
+      object-fit: cover;
+      flex-shrink: 0;
     }
 
     @media (max-width: 700px) {
@@ -144,6 +155,7 @@
       }
       .entrenos-container {
         justify-content: center;
+        padding: 0;
       }
       .side-img {
         width: 60px;
