@@ -2,9 +2,9 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gym Sushi</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
       font-family: 'Nunito', sans-serif;
@@ -22,11 +22,14 @@
       color: #336699;
     }
 
-    .container {
+    .layout {
       display: flex;
-      justify-content: center;
       gap: 2rem;
       flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 2rem;
+      width: 100%;
+      max-width: 700px;
     }
 
     .user, .shared-box {
@@ -46,7 +49,8 @@
     }
 
     .shared-box h2 {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
     }
 
     .buttons {
@@ -54,6 +58,7 @@
       flex-direction: column;
       gap: 1rem;
       margin-bottom: 1rem;
+      width: 100%;
     }
 
     .button {
@@ -62,9 +67,11 @@
       border: 2px solid #336699;
       background-color: white;
       color: #336699;
-      font-weight: bold;
+      font-weight: 700;
       cursor: pointer;
       transition: all 0.3s ease;
+      width: 100%;
+      text-align: center;
     }
 
     .button.active {
@@ -78,17 +85,37 @@
 
     .status {
       margin-top: 1rem;
-      font-weight: bold;
+      font-weight: 700;
       color: #2c3e50;
       text-align: center;
+      min-height: 1.5em;
     }
 
-    .layout {
+    .shared-box p {
+      margin: 0.4rem 0;
+      font-weight: 600;
+    }
+
+    .images {
+      margin-top: 2rem;
       display: flex;
       gap: 2rem;
-      flex-wrap: wrap;
       justify-content: center;
-      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      max-width: 700px;
+    }
+
+    .images img {
+      max-width: 140px;
+      border-radius: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      object-fit: contain;
+    }
+
+    /* Centrar botón de +1 entreno */
+    .shared-box button {
+      margin-top: 1rem;
+      width: 100%;
     }
   </style>
 </head>
@@ -126,11 +153,12 @@
     <p><strong>Sushis ganados:</strong> <span id="sushisGanados">0</span></p>
     <button class="button" onclick="registrarEntreno()">+1 Entreno</button>
   </div>
-  
- <div class="images">
-    <img src="https://img.freepik.com/premium-vector/vector-set-sushi-plate-hand-drawn-illustration_705652-621.jpg" alt="sushi minimalista">
-    <img src="https://i.pinimg.com/736x/09/5b/7e/095b7e6512b04128d196a23e0a6f25a9.jpg" alt="gimnasio minimalista">
+
+  <div class="images">
+    <img src="https://img.freepik.com/premium-vector/vector-set-sushi-plate-hand-drawn-illustration_705652-621.jpg" alt="sushi minimalista" />
+    <img src="https://i.pinimg.com/736x/09/5b/7e/095b7e6512b04128d196a23e0a6f25a9.jpg" alt="gimnasio minimalista" />
   </div>
+
   <script>
     const objetivos = {
       rahma: ['Creatina', 'Proteína', 'Omega-3', 'Omega-3'],
@@ -170,7 +198,7 @@
 
     function actualizarContadores() {
       const entrenosRestantes = 12 - (estado.entrenos % 12);
-      document.getElementById('entrenosRestantes').innerText = entrenosRestantes;
+      document.getElementById('entrenosRestantes').innerText = entrenosRestantes === 12 ? 12 : entrenosRestantes;
       document.getElementById('entrenosTotales').innerText = estado.entrenos;
       document.getElementById('sushisGanados').innerText = estado.sushis;
     }
@@ -179,6 +207,10 @@
       document.querySelectorAll('.button').forEach(btn => btn.classList.remove('active'));
       document.getElementById('statusRahma').innerText = '';
       document.getElementById('statusDaniel').innerText = '';
+      // Reiniciar entrenos y sushis también si quieres:
+      // estado.entrenos = 0;
+      // estado.sushis = 0;
+      // actualizarContadores();
     }
 
     function checkDailyReset() {
