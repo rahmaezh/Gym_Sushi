@@ -1,0 +1,148 @@
+/*here goes all the code that was inside of the <style> label */
+
+body {
+      font-family: 'Nunito', sans-serif;
+      background-color: #f0f6ff;
+      margin: 0;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #2c3e50;
+      font-size: 0.9rem;
+    }
+
+    h1 {
+      margin-bottom: 2rem;
+      color: #336699;
+    }
+
+    .layout {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .user {
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .user h2 {
+      margin-top: 0;
+      color: #336699;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+
+    .button:before {
+    transition: 0.5s all ease;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    opacity: 0;
+    content: '';
+    background-color: #336699;
+    z-index: -1;
+    }
+
+    .button:hover, button:focus {
+    color: white;
+    }
+
+    .button:hover:before, button:focus:before {
+    transition: 0.5s all ease;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    }
+
+    .button:active {
+    transform: scale(0.9);
+    }
+
+    .button {
+      padding: 0.8rem 1.2rem;
+      border-radius: 12px;
+      border: 2px solid #336699;
+      background-color: white;
+      color: #336699;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      position : relative;
+    }
+
+    .button.active {
+      background-color: #a8c7e6;
+      color: white;
+    }
+
+    .button:hover {
+      background-color: #d9e9f8;
+    }
+
+    .status {
+      margin-top: 1rem;
+      font-weight: bold;
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    .entrenos-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 950px;
+      margin-top: 1rem;
+      padding: 0 1rem; /* espacio interno para que no toque borde ventana */
+      box-sizing: border-box;
+    }
+
+    .shared-box {
+      width: 320px;
+      margin: 0 1rem;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .shared-box h2 {
+      font-size: 1.6rem;
+      margin-top: 0;
+      color: #336699;
+    }
+
+    .side-img {
+      border-radius: 15px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      max-height: 280px;
+      width: 280px;
+      object-fit: cover;
+      flex-shrink: 0;
+      margin: 0;
+    }
